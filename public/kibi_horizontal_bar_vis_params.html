@@ -1,0 +1,34 @@
+<!-- vis type specific options -->
+<!-- <div class="vis-option-item form-group">
+  <label>
+    Bar Mode
+  </label>
+  <select class="form-control" ng-model="vis.params.mode" ng-options="mode for mode in vis.type.params.modes"></select>
+</div>
+<point-series-options></point-series-options>
+<vislib-basic-options></vislib-basic-options> -->
+
+<div>
+   <label>
+    <input type="checkbox" value="{{addControl}}" ng-model="vis.params.addControl" name="addControl" ng-checked="vis.params.addControl">
+   Show Controls
+  </label>
+</div>
+<div>
+   <label>
+    <input type="checkbox" value="{{addValues}}" ng-model="vis.params.addValues" name="addValues" ng-checked="vis.params.addValues">
+   Show Values
+  </label>
+</div>
+<div>
+   <label>
+    <input type="checkbox" value="{{addLegend}}" ng-model="vis.params.addLegend" name="addLegend" ng-checked="vis.params.addLegend">
+   Show Legend
+  </label>
+</div>
+<div>
+   <label>
+    <input type="checkbox" value="{{addTooltip}}" ng-model="vis.params.addTooltip" name="addTooltip" ng-checked="vis.params.addTooltip">
+   Show Tooltip
+  </label>
+</div>
