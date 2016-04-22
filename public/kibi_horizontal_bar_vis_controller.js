@@ -1,18 +1,11 @@
 define(function (require) {
-  // get the kibana/metric_vis module, and make sure that it requires the "kibana" module if it
-  // didn't already
-  // var module = require('ui/modules').get('kibana/kibi_horizontal_bar_vis', ['kibana','nvd3ChartDirectives']);
   var module = require('ui/modules').get('kibana/kibi_horizontal_bar_vis', ['kibana', 'nvd3']);
   var d3 = require('d3');
   var _ = require('lodash');
-
   module.controller('KbnHorizontalBarVisController', function ($scope, $element, $rootScope, Private) {
-
     var tabifyAggResponse = Private(require('ui/agg_response/tabify/tabify'));
     var config;
     var margin, width, height;
-
-    // declare data
     var tableGroups = null;
     var _updateDimensions = function () {
       var delta = 18;
@@ -33,16 +26,12 @@ define(function (require) {
     };
 
     var off = $rootScope.$on('change:vis', function () {
-
       _updateDimensions();
       $scope.processTableGroups(tableGroups);
       _updateConfig();
-
     });
 
     $scope.$on('$destroy', off);
-
-
     $scope.processTableGroups = function (tableGroups) {
       $scope.data = [];
       tableGroups.tables.forEach(function (table) {
@@ -69,10 +58,7 @@ define(function (require) {
         }
       });
     };
-
-    // set default config
     var _initConfig = function () {
-
       config = {
         margin: 50,
         w: width - margin,
@@ -87,7 +73,6 @@ define(function (require) {
         showGrouped: true
       };
     }
-
     var _updateConfig = function () {
       config.showLegend = $scope.vis.params.addLegend;
       config.showTooltips = $scope.vis.params.addTooltip;
@@ -95,7 +80,6 @@ define(function (require) {
       config.w = width;
       config.h = height;
       config.showValues = $scope.vis.params.addValues;
-
       $scope.options = {
         chart: {
           type: 'multiBarHorizontalChart',
@@ -114,8 +98,6 @@ define(function (require) {
           },
           showControls: config.showControls,
           showValues: config.showValues,
-          // stacked: false,
-          // grouped: true,
           showLegend: config.showLegend,
           tooltips: config.showTooltips,
           duration: 500,
@@ -145,8 +127,6 @@ define(function (require) {
           legend: {
             dispatch: {
               legendClick: function (e) {
-                // console.log("legend click");
-                // _updateConfig();
               }
             }
           }
